@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block title %}Geological Unit Finder{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <!-- Título principal con animación -->
+        <h2 class="display-4 mb-4 text-center text-dark" data-aos="fade-left">What is the Geological Unit Finder?</h2>
+
+        <div class="row g-4">
+            <!-- Descripción del programa con animación -->
+            <div class="col-md-8" data-aos="fade-right">
+                <p class="lead">
+                    The Geological Unit Finder is a program designed to work with a SQL file database containing information about the main geological units of the Neuquén Basin in Argentina. Users can enter various geological properties, and the program will return matching geological units from the dataset. In addition, users can view the properties and bibliographic references for the geological units of interest.
+                </p>
+            </div>
+            <!-- Imagen -->
+            <div class="col-md-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhTU7Ktm9Nh1wvjd5-g5509HGtCuq7IhjKsA&s"
+                class="img-fluid rounded shadow-sm" alt="Geological Unit Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light rounded-3 shadow-sm">
+    <div class="container">
+        <h2 class="display-4 mb-4" data-aos="fade-left">What is the Neuquen Basin?</h2>
+        <div class="row g-4">
+            <!-- Columna de texto con animación -->
+            <div class="col-md-8" data-aos="fade-right">
+                <p class="mb-3">
+                    The Neuquén Basin is a <span data-bs-toggle="tooltip" title="A subandean depocenter is one that is located in the retro-arc region of the Andes" class="text-primary" data-bs-placement="top"> subandean depocenter </span> located in southern South America with almost 7,000 m of Jurassic and Cretaceous sediments. Its depositional history is a cyclical succession of marine incursions alternating with continental episodes. During the Upper Cretaceous, the rise of the Andes Chain started, and the definite closure of the Pacific marine connection ended the history of the basin as a depocenter.
+                </p>
+                <p class="mb-3">
+                    Its history as a receptor basin initiates in the Late Triassic - Early Jurassic. The principal basement lineaments, that influence the inlines of the subsidence, range from the Early-Middle Paleozoic to the Early Permian.
+                </p>
+            </div>
+
+            <!-- Columna con las dos imágenes al lado derecho del texto -->
+            <div class="col-md-4 d-flex justify-content-between">
+                <!-- Imagen 1, clickeable que abre el modal -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal1" class="d-inline-block" style="width: 48%;">
+                    <img src="https://www.researchgate.net/profile/Sergio-Voglino/publication/316994664/figure/fig1/AS:668917915725825@1536493867094/Figura-11-Limites-de-la-cuenca-Neuquina-linea-discontinua-blanca.png" class="img-fluid rounded shadow-sm" alt="Cuenca Neuquina" style="width: 100%; height: 250px; object-fit: cover;">
+                </a>
+                <!-- Imagen 2, clickeable que abre el modal -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal2" class="d-inline-block" style="width: 48%;">
+                    <img src="static/images/Neuquen Basin Stratigraphic.png" class="img-fluid rounded shadow-sm" alt="Stratigraphic Column 2" style="max-height: 250px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info" id="imageModalLabel1">Stratigraphic Column 1</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://www.researchgate.net/profile/Sergio-Voglino/publication/316994664/figure/fig1/AS:668917915725825@1536493867094/Figura-11-Limites-de-la-cuenca-Neuquina-linea-discontinua-blanca.png"
+                class="img-fluid" alt="Stratigraphic Column 1" role="presentation">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info" id="imageModalLabel2">Stratigraphic Column 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="static/images/Neuquen Basin Stratigraphic.png"
+                class="img-fluid" alt="Stratigraphic Column 2" role="presentation">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="py-5">
+    <h2 class="display-4 mb-4" data-aos="fade-left">What are its main characteristics?</h2>
+    <p class="mb-3" data-aos="fade-up">
+        The Neuquén Basin has a "embayment" underground form, limited by the Andes to the west, by the San Rafael Block to the north and north-east, and by the Somun Cura or North-Patagonian Massif to the south and east.
+    </p>
+    <p class="mb-3" data-aos="fade-up">
+        The principal geological lineament of the basin is the <span data-bs-toggle="tooltip" title="The Huincul Dorsal has a E-O strike and more than 400 km of longitude" class="text-primary" data-bs-placement="top">Huincul Dorsal</span>.
+    </p>
+    <p class="mb-3" data-aos="fade-up">
+        The evolution of the <span data-bs-toggle="tooltip" title="The Andean Front represents the geologically active boundary where the Andean mountain range interacts with the surrounding terrain." class="text-primary" data-bs-placement="top">Andean Front</span> gives form to the actual morphostructure of the basin, with the thrust and belt front limited to the west by a plio-quaternary depression, and to the east by the Embayment zone. Fault inversion, thrust, and belt generation expose the principal Mesozoic sedimentary sequences.
+    </p>
+
+    <a href="{{ url_for('interactive_map') }}" class="btn btn-primary">Go to the Morphostructural map of the Neuquén Basin</a>
+    <a href="{{ url_for('outcrops_map') }}" class="btn btn-primary">Go to the Interactive map of outcrops in the Neuquén Basin</a>
+</section>
+
+<script>
+    // Inicializar AOS
+    AOS.init({
+        duration: 1000,  // Duración de la animación
+        once: true       // La animación solo se ejecuta una vez
+    });
+</script>
+{% endblock %}

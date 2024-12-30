@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block title %}Select Geological Unit{% endblock %}
+
+{% block content %}
+    <section class="container py-5">
+        <h2 class="text-center text-primary mb-4">Select a Formation to View Properties</h2>
+        <form action="{{ url_for('view_properties') }}" method="POST" id="formation-form">
+            <div class="form-group">
+                <label for="formation_name">Choose a Geological Formation:</label>
+                <div class="custom-dropdown">
+                    <input type="text" id="search-formation" class="form-control" autocomplete="off" placeholder="Search for a formation...">
+                    <div class="dropdown-list">
+                        {% for unit in geological_units %}
+                            <div class="dropdown-item" data-value="{{ unit }}">{{ unit.title() }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <small class="form-text text-muted">Note that the formations appear without 'Fm' to keep the database clean.</small>
+            </div>
+            <input type="hidden" name="formation_name" id="formation_name" />
+            <button type="submit" class="btn btn-primary btn-lg mt-3">View Properties</button>
+        </form>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Toggle dropdown visibility when clicking the input field
+            $('#search-formation').on('click', function(event) {
+                event.stopPropagation();  // Prevent click from propagating to the document
+                $('.dropdown-list').toggleClass('show');  // Toggle dropdown visibility
+            });
+
+            // Filter items in the dropdown based on input
+            $('#search-formation').on('input', function() {
+                var filter = $(this).val().toLowerCase();
+                $('.dropdown-item').each(function() {
+                    var text = $(this).text().toLowerCase();
+                    $(this).toggle(text.indexOf(filter) > -1);
+                });
+            });
+
+            // Set selected item and hide dropdown
+            $('.dropdown-item').on('click', function() {
+                var selectedText = $(this).text();
+                var selectedValue = $(this).data('value');
+                $('#search-formation').val(selectedText);
+                $('#formation_name').val(selectedValue);
+                $('.dropdown-list').removeClass('show'); // Hide dropdown after selection
+            });
+
+            // Close dropdown if the user clicks outside of the dropdown/input field
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.custom-dropdown').length) {
+                    $('.dropdown-list').removeClass('show');  // Hide dropdown if click is outside
+                }
+            });
+
+            // Form validation
+            $('#formation-form').submit(function(event) {
+                var selectedFormation = $('#formation_name').val();
+                if (!selectedFormation) {
+                    $('#search-formation').addClass('is-invalid'); // Add invalid class to input
+                    alert("Please select a valid geological formation.");
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    $('#search-formation').removeClass('is-invalid'); // Remove invalid class on valid selection
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

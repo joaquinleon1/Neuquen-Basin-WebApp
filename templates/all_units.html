@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}All Geological Units{% endblock %}
+
+{% block content %}
+    <!-- Contenedor principal para alinear el contenido -->
+    <section class="container py-5">
+        <h2 class="display-4 mb-4 text-center">All Geological Units</h2> <!-- Título de la página -->
+
+        <div class="row">
+            {% for unit, properties in units.items() %}
+                <div class="col-md-4 mb-4" data-aos="flip-up" data-aos-delay="{{ loop.index0 * 10 }}"> <!-- Tarjeta para cada unidad geológica -->
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ unit.title() }}</h5> <!-- Título de la unidad -->
+                            <p class="card-text"><strong>Age:</strong> {{ properties['age'] }}</p> <!-- Propiedad de Edad -->
+                            <p class="card-text"><strong>Details:</strong> <a href="{{ url_for('properties', formation_name=unit.lower()) }}" class="btn btn-warning">
+                                <i class="fas fa-search"></i> {{ unit.title() }}
+                            </a></p> <!-- Detalles -->
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Botón para regresar a la página principal -->
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary btn-lg">Go Back Home</a>
+        </div>
+    </section>
+    <script>
+        // Inicializar AOS cuando la página esté lista
+        AOS.init({
+            duration: 1000,  // Duración de la animación en milisegundos
+            once: true,      // Hace que la animación ocurra solo una vez
+        });
+    </script>
+{% endblock %}
+

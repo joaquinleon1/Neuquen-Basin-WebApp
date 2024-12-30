@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}Geological Unit Finder{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center text-primary mb-4">Geological Unit Finder</h2>
+    <p class="text-center mb-4">
+        Enter the desired properties. The input does not necessarily have to be exact. For example, “marine” in the paleoenvironment field will show any units that contain the word 'marine'.
+        Be sure to input the correct properties, as any mismatch counts.
+        Please check the descriptions at the bottom of each field for guidance on the type of values required.
+    </p>
+
+    <form method="POST" class="mt-4">
+        {% for key, prompt in prompts.items() %}
+            <div class="mb-4">
+                <label for="{{ key }}" class="form-label font-weight-bold">{{ prompt }}:</label>
+
+                {% if key == 'TOC' or key == 'thickness' %}
+                    <input type="text" id="{{ key }}" autocomplete="off" name="{{ key }}"
+                           class="form-control" placeholder="Introduce {{ prompt }}. Example: 4 or 4-5"
+                           title="Introduce a natural number or a range (e.g., 4 or 4-5)">
+                    <small class="form-text text-muted">Please, introduce a natural number or a range.</small>
+                {% elif key == 'age' %}
+                    <input type="text" id="{{ key }}" autocomplete="off" name="{{ key }}"
+                           class="form-control" placeholder="Introduce {{ prompt }} (text)"
+                           title="Introduce text">
+                    <small class="form-text text-muted">Please, introduce text (e.g., Jurassic, Triassic).</small>
+                    <a href="https://stratigraphy.org/ICSchart/ChronostratChart2023-09.pdf" target="_blank" class="btn btn-link">See the IUGS Geological Time Scale for reference</a>
+
+                {% else %}
+                    <input type="text" id="{{ key }}" autocomplete="off" name="{{ key }}"
+                           class="form-control" placeholder="Introduce {{ prompt }} (text)"
+                           title="Introduce text">
+                    <small class="form-text text-muted">Please, introduce text, depending on the field. Exact matching is not necessary.</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+        </div>
+    </form>
+
+    <!-- Advertencia sobre el mal uso de los campos -->
+    <div class="alert alert-danger mt-4" role="alert">
+        <strong>Warning!</strong> Please be mindful when entering data. Incorrect input or misuse of fields can lead to inaccurate results or failures. Make sure to follow the provided examples and field descriptions carefully.
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</div>
+{% endblock %}

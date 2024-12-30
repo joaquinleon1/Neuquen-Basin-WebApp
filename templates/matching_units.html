@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block title %}Matching Units{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Matching Units</h2>
+
+    <!-- Mostrar las características ingresadas por el usuario -->
+    <div class="alert alert-info mb-4">
+        <strong>Entered Characteristics:</strong>
+        <ul>
+            {% if user_inputs['TOC'] %}
+                <li><strong>TOC:</strong>
+                    {% if '-' in user_inputs['TOC']|string %}
+                        {{ user_inputs['TOC'] }} <!-- Si es un rango, lo mostramos tal cual -->
+                    {% else %}
+                        {{ user_inputs['TOC'] | float | int }} <!-- Redondeamos al entero inferior -->
+                    {% endif %}
+                </li>
+            {% endif %}
+            {% if user_inputs['thickness'] %}
+                <li><strong>Thickness:</strong>
+                    {% if '-' in user_inputs['thickness']|string %}
+                        {{ user_inputs['thickness'] }} <!-- Si es un rango, lo mostramos tal cual -->
+                    {% else %}
+                        {{ user_inputs['thickness'] | float | int }} <!-- Redondeamos al entero inferior -->
+                    {% endif %}
+                </li>
+            {% endif %}
+            {% if user_inputs['age'] %}
+                <li><strong>Age:</strong> {{ user_inputs['age'] }}</li>
+            {% endif %}
+            {% if user_inputs['lithology'] %}
+                <li><strong>Lithology:</strong> {{ user_inputs['lithology'] }}</li>
+            {% endif %}
+            {% if user_inputs['porosity'] %}
+                <li><strong>Porosity:</strong> {{ user_inputs['porosity'] }}</li>
+            {% endif %}
+            {% if user_inputs['permeability'] %}
+                <li><strong>Permeability:</strong> {{ user_inputs['permeability'] }}</li>
+            {% endif %}
+            {% if user_inputs['structural_features'] %}
+                <li><strong>Structural Features:</strong> {{ user_inputs['structural_features'] }}</li>
+            {% endif %}
+            {% if user_inputs['hydrocarbon_potential'] %}
+                <li><strong>Hydrocarbon Potential:</strong> {{ user_inputs['hydrocarbon_potential'] }}</li>
+            {% endif %}
+            {% if user_inputs['paleoenvironment'] %}
+                <li><strong>Paleoenvironment:</strong> {{ user_inputs['paleoenvironment'] }}</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- Lista de unidades mejorada con Bootstrap Cards -->
+    <div class="row">
+        {% for unit in matches %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ unit }}</h5>
+                        <p class="card-text">Click to view detailed properties of this geological unit.</p>
+                        <a href="{{ url_for('properties', formation_name=unit.lower()) }}" class="btn btn-warning w-100">
+                            <i class="fas fa-search"></i> View Properties
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Enlaces con botones de Bootstrap -->
+    <div class="mt-4 text-center">
+        <a href="{{ url_for('find_unit') }}" class="btn btn-primary btn-lg">Search Again</a>
+        <a href="/" class="btn btn-secondary btn-lg">Home</a>
+    </div>
+</div>
+{% endblock %}

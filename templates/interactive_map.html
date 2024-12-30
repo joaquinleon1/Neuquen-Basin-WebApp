@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+
+{% block title %}Geological Unit Finder{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Interactive Map of the Neuquen Basin</h1>
+        <div class="row">
+            <!-- Mapa interactivo -->
+            <div class="col-md-8">
+                <div class="position-relative">
+                    <!-- Imagen interactiva -->
+                    <img src="https://www.researchgate.net/profile/Adolfo-Giusiano/publication/267982218/figure/fig1/AS:613911095173125@1523379219276/Figura-1-A-Mapa-de-ubicacion-de-la-Cuenca-Neuquina-B-Mapa-de-la-Cuenca-Neuquina.png"
+                        alt="Neuquen Basin Map" class="img-fluid">
+
+                    <!-- Iconos interactivos -->
+                    <div class="icon position-absolute" style="top: 20%; left: 35%;" onclick="togglePopup('popup1')">📍</div>
+                    <div class="icon position-absolute" style="top: 40%; left: 50%;" onclick="togglePopup('popup2')">📍</div>
+                    <div class="icon position-absolute" style="top: 40%; left: 22%;" onclick="togglePopup('popup3')">📍</div>
+                    <div class="icon position-absolute" style="top: 50%; left: 40%;" onclick="togglePopup('popup4')">📍</div>
+                    <div class="icon position-absolute" style="top: 50%; left: 50%;" onclick="togglePopup('popup5')">📍</div>
+                    <div class="icon position-absolute" style="top: 63%; left: 50%;" onclick="togglePopup('popup6')">📍</div>
+                    <div class="icon position-absolute" style="top: 72%; left: 50%;" onclick="togglePopup('popup7')">📍</div>
+
+                    <!-- Popups -->
+                    <div id="popup1" class="popup position-absolute" style="top: 20%; left: 35%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Thrust and Fold Belt</h5>
+                                <p class="card-text">The actual Thrust and Fold Belt consists of several sub-belts; Chos Malal and Malargüe
+                                    Thrust and Fold Belt,
+                                    and the Northern Precordillera
+                                    on the north; the Agrio Thrust and Fold Belt on the center; and
+                                the Southern Precordillera</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup2" class="popup position-absolute" style="top: 40%; left: 50%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Outer Platform</h5>
+                                <p class="card-text">Stable platform on the borders of the Neuquén Embayment, segmented by a series
+                                    of basement fractures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup3" class="popup position-absolute" style="top: 40%; left: 22%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Fosa de Loncopué</h5>
+                                <p class="card-text">Plio-Quaternary subsidence that limits the Andean Front.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup4" class="popup position-absolute" style="top: 50%; left: 40%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Chihuidos High</h5>
+                                <p class="card-text">Positive element composed of a series of anticlines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup5" class="popup position-absolute" style="top: 50%; left: 50%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Embayment</h5>
+                                <p class="card-text">Extra-Andean region of Neuquén. Characterized by Mesozoic and Cenozoic sequences.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup6" class="popup position-absolute" style="top: 63%; left: 50%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Huincul Dorsal</h5>
+                                <p class="card-text">The Huincul Dorsal subdivides the Neuquen Basin into two
+                                    sub-systems. The origin of this large structure is due to the transcurrence.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup7" class="popup position-absolute" style="top: 72%; left: 50%;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Outer Platform</h5>
+                                <p class="card-text">Stable platform on the edges of the Neuquén Embayment, segmented by a series
+                                    of basement fractures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="col-md-4">
+                <div class="bg-light p-4 rounded shadow-sm">
+                    <p>The principal morphostructural units of the Neuquen Basin.</p>
+                    <p>The Andean Front is not represented in this map, only the sub-Andean subdivisions. The Thrust and Fold Belt could be divided into three sectors: the Northern Precordillera is subdivided into two regions, the northern part, constituted by Neopaleozoic units, which are the substratum of the Choiyoi Group; the southern sector is constituted by the Agrio Thrust and Fold Belt, constituted by Mesozoic units; and the Southern Precordillera, constituted by a Devonian basement and units equivalent to the Choiyoi Group.
+                    </p>
+                    <p>The central sector of the basin is divided into three sectors: the reservoir is characterised by Mesozoic and Tertiary folded sequences; to the south it is bounded by the Huincul Dorsal, a conspicuous lineament composed of several structures such as inverted hemigranes, transcurrent faults and anticlines; and to the west, a series of west-vergent anticlines form the Chihuidos Dorso.
+                    </p>
+                    <p>
+                        The basin boundary to the east consists of a series of gentle folds segmented by multiple faults. To the south, it transitions into the Norpatagonian Massif, and to the northeast into the San Rafael Block.
+                    </p>
+                    <p>Image taken from <a href="https://www.researchgate.net/publication/267982218_CONTROLES_ESTRATIGRAFICOS_SOBRE_PROPIEDADES_DE_LA_ROCA_EN_LOS_SHALES_DE_LA_FORMACION_VACA_MUERTA_CUENCA_NEUQUINA_PROVINCIA_DE_NEUQUEN">
+                        Sales et al. (2014) after Alonso (2011) </a>.</p>
+                    <p><a href="https://rdi.uncoma.edu.ar/handle/uncomaid/18009">See more about Geological Provinces of Neuquen here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        // Función para mostrar/ocultar los popups
+        function togglePopup(popupId) {
+            // Cerrar todos los popups
+            var popups = document.querySelectorAll('.popup');
+            popups.forEach(function(popup) {
+                popup.classList.remove('show');
+            });
+
+            // Ahora abrir el popup correspondiente
+            var popup = document.getElementById(popupId);
+            popup.classList.add('show');
+        }
+
+        // Cerrar popups si se hace clic fuera de ellos
+        window.onclick = function(event) {
+            var popups = document.querySelectorAll('.popup');
+            var iconos = document.querySelectorAll('.icon');
+            var clickedInsidePopup = Array.from(popups).some(function(popup) {
+                return popup.contains(event.target);
+            });
+            var clickedInsideIcon = Array.from(iconos).some(function(icon) {
+                return icon.contains(event.target);
+            });
+            if (!clickedInsidePopup && !clickedInsideIcon) {
+                popups.forEach(function(popup) {
+                    popup.classList.remove('show');
+                });
+            }
+        };
+    </script>
+{% endblock %}
